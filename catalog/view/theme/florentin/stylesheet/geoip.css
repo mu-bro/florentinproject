@@ -1,0 +1,128 @@
+/* geoip */
+#geoip.geoip-block
+{
+    margin: 5px 0 -5px;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+	position: absolute;
+	width: 200px;
+	top: 66px;
+	left: 33px;
+	z-index: 102;
+}
+
+.geoip-block .content
+{
+    position: absolute;
+    left: 0;
+    z-index: 100;
+	
+}
+.geoip-text {
+	font-size: 15px;
+	font-family: 'rodeoC';	
+}
+.geoip-text b {
+	font-weight:normal;
+}
+.geoip-block input
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 0 #F0F0F0;
+    -moz-box-shadow: 0 2px 0 #F0F0F0;
+    box-shadow: 0 2px 0 #F0F0F0;
+}
+
+.geoip-block .geoip-search
+{
+    display: none;
+}
+
+.geoip-block .zone
+{
+    border-bottom: 1px dotted;
+    cursor: pointer;
+}
+
+.geoip-block .ui-autocomplete
+{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+* html .geoip-block .ui-autocomplete
+{
+    height: 300px;
+}
+
+#geoip-confirm-region
+{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#geoip-choose-region .column
+{
+    float: left;
+	width: 31%;
+	padding-left: 3px;
+}
+
+#geoip-choose-region .column .i
+{
+    margin-bottom: 15px;
+}
+
+#geoip-choose-region .column a
+{
+    color: #000;
+	font-size: 14px;
+}
+
+#geoip-choose-region .geoip-block
+{
+    margin: 0px 0 10px;
+}
+
+#geoip-choose-region .geoip-block input
+{
+    width: 50%;
+}
+
+#geoip-choose-region .border
+{
+    margin: 15px 0;
+    border-bottom: 1px solid #ededed;
+}
+
+/* css for ui */
+.ui-widget-content .ui-widget-header {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	border-radius: 0px;
+	background:none;
+	border:none;
+	border-bottom: 1px solid #918F8F;
+	margin: 10px 12px;
+	color: black;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-family: 'rodeoC';
+	font-weight:normal;
+}
+.ui-dialog.ui-widget-content .ui-dialog-titlebar {
+	padding:10px 0;
+}
+.ui-dialog.ui-widget-content .ui-state-hover {
+	background:none;
+	border:1px solid transparent;
+}

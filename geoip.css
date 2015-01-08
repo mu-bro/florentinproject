@@ -1,0 +1,51 @@
+/* geoip */
+#geoip
+{
+    margin: 5px 0 -5px;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+}
+
+#geoip .content
+{
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+#geoip input
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 0 #F0F0F0;
+    -moz-box-shadow: 0 2px 0 #F0F0F0;
+    box-shadow: 0 2px 0 #F0F0F0;
+}
+
+#geoip #geoip-search
+{
+    display: none;
+}
+
+#geoip .zone
+{
+    border-bottom: 1px dotted;
+    cursor: pointer;
+    color: #38B0E3;
+}
+
+.pr-autocomplete .ui-autocomplete
+{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+* html .pr-autocomplete .ui-autocomplete
+{
+    height: 300px;
+}
