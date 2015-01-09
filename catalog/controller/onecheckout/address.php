@@ -186,10 +186,22 @@ class ControllerOneCheckoutAddress extends Controller {
 			} else {
 				$this->data['delivery_time'] = "";
 			}
+
+			if (isset($this->session->data['delivery_interval'])) {
+				$this->data['delivery_interval'] = $this->session->data['delivery_interval'];
+			} else {
+				$this->data['delivery_interval'] = "";
+			}
+
 			$this->session->data['payment']['delivery_time'] = $this->session->data['delivery_time'] = $this->data['delivery_time'];
+			$this->session->data['payment']['delivery_interval'] = $this->session->data['delivery_interval'] = $this->data['delivery_interval'];
 			if (empty($this->data['delivery_time'])) {
-				$this->session->data['payment']['delivery_time'] = $this->session->data['delivery_time'] = date("d.m.Y H:i",strtotime('+2 day'));
-			}			
+				$this->session->data['payment']['delivery_time'] = $this->session->data['delivery_time'] = date("d.m.Y",strtotime('+2 day'));
+			}
+			if (empty($this->data['delivery_interval'])) {
+				$this->session->data['payment']['delivery_interval'] = $this->session->data['delivery_interval'] = "10:00-13:00";
+			}
+			$this->data['delivery_intervals'] = array("10:00-13:00","13:00-16:00","16:00-19:00","19:00-21:00");
 
 			$this->data['email'] = $this->customer->getEmail();
 			$this->data['telephone'] = $this->customer->getTelephone();
@@ -484,7 +496,10 @@ class ControllerOneCheckoutAddress extends Controller {
 			$phone = ($this->customer->isLogged()) ? $this->customer->getTelephone() : $this->session->data['guest']['telephone'];
 			$email = ($this->customer->isLogged()) ? $this->customer->getEmail() : $this->session->data['guest']['email'];
 			$delivery_date = ($this->session->data['shipping_type'] == 1) ? $this->session->data['payment']['delivery_time'] : $this->session->data['guest']['shipping']['delivery_time'];
-			$address = ($this->session->data['shipping_type'] == 1) ? $this->session->data['payment']['address_1'] : $this->session->data['shipping']['address_1'];
+				$address = ($this->session->data['shipping_type'] == 1) ?
+					isset($this->session->data['payment']['address_1']) ? $this->session->data['payment']['address_1'] : "" :
+					isset($this->session->data['shipping']['address_1']) ? $this->session->data['shipping']['address_1'] : "";
+			$delivery_interval = $this->session->data['delivery_interval'];
 
 			
 			$json['paymentaddress'] = '
@@ -517,7 +532,7 @@ class ControllerOneCheckoutAddress extends Controller {
 					<br />
 					<div>
 						<label>' . $this->data['entry_delivery_time']. '</label>
-						<div class="info_data">' .$delivery_date. '</div>
+						<div class="info_data">' .$delivery_date. ' ' .  $delivery_interval . '</div>
 					</div>
 				';
 			} else {
@@ -597,6 +612,10 @@ class ControllerOneCheckoutAddress extends Controller {
 	public function paymentDelDate() {
 		if (isset($this->request->post['delivery_time'])) {
 			$this->session->data['payment']['delivery_time'] = $this->session->data['delivery_time'] = $this->request->post['delivery_time'];
+		}
+
+		if (isset($this->request->post['delivery_interval'])) {
+			$this->session->data['payment']['delivery_interval'] = $this->session->data['delivery_interval'] = $this->request->post['delivery_interval'];
 		}
 	}
 	

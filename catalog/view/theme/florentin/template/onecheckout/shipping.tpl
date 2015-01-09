@@ -37,8 +37,16 @@
 							<?php } ?>
 							<div class="date_block">
 								<label><span class="required">*</span> <?php echo $entry_delivery_time; ?></label>
-								<input type="text" name="delivery_time" value="<?php echo $delivery_time; ?>" class="large-field ship_form" style="width:180px;"/>
-								<div></div>
+
+								<div style="float:left;width:130px;">
+									<input type="text" name="delivery_time[<?php echo $quote['code']; ?>]" value="<?php echo $delivery_time; ?>" class="large-field ship_form" style="width:60px;"/>
+									<div></div>
+								</div>
+								<select name="delivery_interval[<?php echo $quote['code']; ?>]" style="float:right;width:100px;">
+									<?php foreach ($delivery_intervals as $interval) { ?>
+									<option value="<?php echo $interval; ?>" <?php if ($interval == $delivery_interval) echo 'selected="selected"'; ?> ><?php echo $interval; ?></option>
+									<?php } ?>
+								</select>
 							</div>
 							<span class="help" style="color:red;">
 								<?php echo $warningText; ?>
@@ -84,12 +92,13 @@
 			.addClass('xdsoft_disabled');
 		},
 		defaultSelect: false,
-		closeOnWithoutClick :false,
+		closeOnWithoutClick :true,
 		todayButton: false,
-		<?php  if (empty($delivery_time)) echo 'value: "' .  date("d.m.Y H:i",strtotime('+2 day')) . '",'; ?>
+		<?php  if (empty($delivery_time)) echo 'value: "' .  date("d.m.Y",strtotime('+2 day')) . '",'; ?>
 		disableDates:['<?php echo implode("','",$weekends); ?>'],
 		minDate:'<?php echo $min_date; ?>',
 		allowTimes:['<?php echo implode("','",$allowTimes); ?>'],
-		format:'d.m.Y H:i'
+		timepicker:false,
+		format:'d.m.Y'
 	}).attr('readonly','readonly');
 </script>

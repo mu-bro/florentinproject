@@ -31,7 +31,12 @@
 				<tr>
 					<td colspan="3" class="price total_name"><?php echo $total['title']; ?>:</td>
 					<td class="total total_value"><?php echo $total['text']; ?></td>
-					<td></td>
+					<td class="removeCoupon">
+						<?php if ($total['code'] == "coupon") { ?>
+							<img id="removeCoupon" src="catalog/view/theme/florentin/image/delete.png"
+								 alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" 	onclick="removeCouponC();" />
+						<?php } ?>
+					</td>
 				</tr>
 			<?php } ?>
 		</tfoot>
@@ -108,7 +113,24 @@
 				}
 			});
 		},700);
-	}	
+	}
+	function removeCouponC() {
+		$.ajax({
+			type: 'POST',
+			url: 'index.php?route=onecheckout/cartmodule/removeCoupon',
+			data: $('#coupon :input'),
+			dataType: 'json',
+			beforeSend: function() {
+				$('.success, .warning').remove();
+				$('#removeCoupon').css("opacity",0.4);
+
+			},
+			complete: function() {
+				$('#removeCoupon').css("opacity",1);
+				confirmorder();
+			}
+		});
+	}
 </script>
 <script type="text/javascript"><!--
 $('.colorbox').colorbox({

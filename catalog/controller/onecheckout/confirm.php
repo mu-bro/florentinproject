@@ -355,6 +355,7 @@ class ControllerOneCheckoutConfirm extends Controller {
 			}
 
 			$data['shipping_type'] = $this->session->data['shipping_type'];
+			$data['payment_delivery_interval'] = $this->session->data['delivery_interval'];
 
 			if ($this->customer->isLogged()) {
 
@@ -477,6 +478,7 @@ class ControllerOneCheckoutConfirm extends Controller {
 
 				$data['shipping_need2call'] = $shipping_address['need2call'];
 				$data['shipping_telephone'] = ($shipping_address['need2call'] == 1) ? $shipping_address['telephone'] : "";
+
 
 				$data['shipping_zone'] = $shipping_address['zone'];
 
@@ -774,8 +776,7 @@ class ControllerOneCheckoutConfirm extends Controller {
 			}	
 			
 			} elseif($version_int >= 1520) {
-			
-			$this->load->model('checkout/order');			
+			$this->load->model('checkout/order');
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($data);
 			
 			}	

@@ -45,12 +45,11 @@ $this->data = array_merge( $this->data , $this->language->load('account/account'
 
 		$this->data['reward_total'] = (int)$this->customer->getRewardPoints();
 		
-		if ($this->config->get('reward_status')) {
+		if ($this->config->get('config_reward_points')) {
 			$this->data['reward'] = $this->url->link('account/reward', '', 'SSL');
 		} else {
 			$this->data['reward'] = '';
 		}
-		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/account.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/account/account.tpl';
 		} else {

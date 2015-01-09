@@ -17,7 +17,7 @@
 	<?php if($coupon_status) { ?>
 		<div class="cart-module" id="coupon">
 			<label><?php echo $entry_coupon; ?></label>
-			<input type="text" name="coupon" value="<?php echo $coupon; ?>" class="middle-field" />
+			<input type="text" name="coupon" id="couponInput" value="<?php echo $coupon; ?>" class="middle-field" />
 			<a id="button-coupon" class="button treangle"><span class="treangle"></span></a></div>
 		</div>
 	<?php } ?>
@@ -72,10 +72,17 @@
 }
 </style>
 <script type="text/javascript"><!--
-$('select[name="discount_select"]').bind('change', function() {
-	discont_type = $(this).val();
-	$('.cart-module').hide();
-	$('.cart-module#' + discont_type).show();
-});
-$('select[name="discount_select"]').trigger('change');
+	$('select[name="discount_select"]').bind('change', function() {
+		discont_type = $(this).val();
+		$('.cart-module').hide();
+		$('.cart-module#' + discont_type).show();
+	});
+	$('select[name="discount_select"]').trigger('change');
+
+	$('#couponInput').keypress(function (e) {
+		if (e.which == 13) {
+			confirmCoupon();
+			return false;
+		}
+	});
 //--></script>

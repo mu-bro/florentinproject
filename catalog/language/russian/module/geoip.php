@@ -4,5 +4,5 @@ $_['text_zone']               = '<b>Ваш регион</b>';
 $_['text_search_zone']        = 'Поиск региона';
 $_['text_search_placeholder'] = 'Введите название';
 $_['text_confirm_region']     = 'Ваш город &mdash; %s<br>Угадали?';
-$_['text_choose_region']      = 'Выберите город из списка или воспользуйте поисковой строкой';
+$_['text_choose_region']      = 'Выберите город';
 ?>

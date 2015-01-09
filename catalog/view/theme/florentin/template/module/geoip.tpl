@@ -87,8 +87,9 @@
 
         GeoIp.chooseRegion.dialog({
             autoOpen:  false,
-            minWidth:  600,
-            minHeight: 400,
+            minWidth:  200,
+            minHeight: 100,
+            resizable: false,
             modal:     true,
             open:      function() {
                 $.ajax({

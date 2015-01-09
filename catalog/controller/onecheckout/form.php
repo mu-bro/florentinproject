@@ -242,6 +242,7 @@ class ControllerOneCheckoutForm extends Controller {
 					$this->session->data['payment']['delivery_time'] = $this->request->post['delivery_time'];
 				}
 			}
+			$this->session->data['delivery_interval'] = $this->request->post['delivery_interval'];
 
 			if(isset($this->request->post['address_1'])) {
 				if (empty($this->request->post['address_1'])) {

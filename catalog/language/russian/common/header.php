@@ -11,5 +11,5 @@ $_['text_checkout']       = 'Оформление заказа';
 $_['text_page']           = 'страница';
 $_['left_top_sign']       = 'Доставка свежих цветов<br/> в шляпных коробках.';
 $_['right_top_text']       = 'Звоните для быстрого заказа!';
-/* replaced "right_top_text" */ $_["right_top_text"] = "Звоните для быстрого заказа! <br/><font>с 10 до 20 часов!</font>";
+/* replaced "right_top_text" */ $_["right_top_text"] = "Звоните для быстрого заказа<br/><font>с 10 до 20 часов</font>";
 ?>

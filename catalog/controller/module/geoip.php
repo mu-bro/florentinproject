@@ -190,7 +190,7 @@ class ControllerModuleGeoip extends Controller {
         $country_id = $this->geoip->getCountryId();
         $city_name = $this->geoip->getCityName();
         $postcode = $this->geoip->getPostcode();
-
+//p($postcode);
         if ($country_id) {
 
             if (empty($session->data['shipping_country_id'])) {
@@ -277,7 +277,7 @@ class ControllerModuleGeoip extends Controller {
      * Используется, когда пользователь меняет регион вручную.
      */
     private function forceSaveInSession() {
-
+die('forceSaveInSession');
         $session = $this->registry->get('session');
         $zone_id = $this->geoip->getZoneId();
         $country_id = $this->geoip->getCountryId();

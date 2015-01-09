@@ -11,12 +11,18 @@
 </div>
 <script type="text/javascript"><!--
 $(document).ready(function() {
-	$('#slideshow<?php echo $module; ?>').bxSlider({
+  var slider = $('#slideshow<?php echo $module; ?>').bxSlider({
 			auto: <?php echo (count($banners) > 1) ? 'true' : 'false'; ?>,
 			autoControls: false,
 			pager: false,
 			speed: 400,
 			controls: <?php echo (count($banners) > 1) ? 'true' : 'false'; ?>
 	});
+  $(".bx-controls-direction a").click(function () {
+    slider.stopAuto();
+    slider.startAuto();
+  });
 });
+
+
 --></script>

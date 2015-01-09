@@ -238,7 +238,7 @@
           <?php if (!empty($payment_delivery_date)) { ?>
           <tr>
             <td>Время и дата доставки:</td>
-            <td><?php echo $payment_delivery_date; ?></td>
+            <td><?php echo $payment_delivery_date; ?> <?php echo $payment_delivery_interval; ?></td>
           </tr>
            <?php } ?>
         </table>

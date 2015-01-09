@@ -43,12 +43,6 @@
 		<div class="info_data"><?php echo $address_1; ?></div>
 		<br />
 		<?php } ?>
-		<div class="date_block">
-			<label><span class="required">*</span> <?php echo $entry_delivery_time; ?></label>
-			<input type="text" name="delivery_time" value="<?php echo $delivery_time; ?>" class="large-field date" style="width:190px;"/>
-			<div></div>
-		</div>
-		<br />
   	</div>
   
 

@@ -432,6 +432,7 @@ class ModelSaleOrder extends Model {
 				'shipping_type'           => $order_query->row['shipping_type'],
 				'shipping_delivery_date'  => $order_query->row['shipping_delivery_date'],
 				'payment_delivery_date'   => $order_query->row['payment_delivery_date'],
+				'payment_delivery_interval'=> $order_query->row['payment_delivery_interval'],
 				'shipping_iso_code_2'     => $shipping_iso_code_2,
 				'shipping_iso_code_3'     => $shipping_iso_code_3,
 				'shipping_address_format' => $order_query->row['shipping_address_format'],

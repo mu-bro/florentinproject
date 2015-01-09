@@ -23,7 +23,6 @@ class ControllerOneCheckoutGuest extends Controller {
 		} 
 
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
-			
 			if (!$json) {
 
 				if ((strlen(utf8_decode($this->request->post['firstname'])) < 1) || (strlen(utf8_decode($this->request->post['firstname'])) > 32)) {
@@ -146,9 +145,9 @@ class ControllerOneCheckoutGuest extends Controller {
 				$this->session->data['guest']['payment']['country_id'] = $this->request->post['country_id'];
 				$this->session->data['guest']['payment']['zone_id'] = $this->request->post['zone_id'];
 				if (!isset($this->session->data['shipping_type']) || $this->session->data['shipping_type'] == 1) {
-					$this->session->data['guest']['shipping']['delivery_time'] = $this->session->data['payment']['delivery_time'] = $this->request->post['delivery_time'];
+					$this->session->data['guest']['shipping']['delivery_time'] = 		$this->session->data['payment']['delivery_time'] = $this->request->post['delivery_time'];
 				}
-			//	p($this->request->post,$this->session->data);
+				$this->session->data['guest']['shipping']['delivery_interval'] = 	$this->session->data['delivery_interval']	= $this->session->data['payment']['delivery_interval'] = $this->request->post['delivery_interval'];
 
 				$country_info = $this->model_onecheckout_checkout->getCountry($this->request->post['country_id']);
 				
@@ -462,7 +461,7 @@ class ControllerOneCheckoutGuest extends Controller {
 				}		
 
 			}
-			
+		//	p($this->request->post,$this->session->data);
 			unset($this->session->data['shipping_methods']);
 			unset($this->session->data['shipping_method']);
 

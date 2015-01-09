@@ -171,7 +171,7 @@ $(document).ready(function() {
 					$.ajax({
 						url: 'index.php?route=onecheckout/shipping&countryid=<?php echo $shipping_country_id; ?>&zoneid=<?php echo $shipping_zone_id; ?>&isset=0&city=<?php echo $shipping_city; ?>&postcode=<?php echo $shipping_postcode; ?>',
 						type: 'post',
-						data: $('#shipping-method input[type=\'radio\']:checked'),
+						data: $('#shipping-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -316,7 +316,7 @@ $('#shipping-method input[name=\'shipping_method\']').live('change', function() 
 	$.ajax({
 		url: ajaxurl,
 		type: 'post',
-		data: $('#shipping-method input[type=\'radio\']:checked'),
+		data: $('#shipping-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 		dataType: 'json',
 		success: function(json) {
 			$('.success, .warning').remove();
@@ -357,7 +357,7 @@ $('#payment-method input[name=\'payment_method\']').live('change', function() {
 	$.ajax({
 		url: ajaxurl,
 		type: 'post',
-		data: $('#payment-method input[type=\'radio\']:checked'),
+		data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 		dataType: 'json',
 		success: function(json) {
 			$('.success, .warning').remove();
@@ -572,7 +572,7 @@ function shippingmethod(countryid, zoneid, isset, city, postcode, shipping_type)
 					$.ajax({
 						url: 'index.php?route=onecheckout/shipping&countryid=' + countryid + '&zoneid=' + zoneid + '&isset=' + isset + '&city=' + city + '&postcode=' + postcode,
 						type: 'post',
-						data: $('#shipping-method input[type=\'radio\']:checked'),
+						data: $('#shipping-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -615,7 +615,7 @@ function paymentmethod(countryid, zoneid, isset, city, postcode) {
 				  $.ajax({
 						url: 'index.php?route=onecheckout/payment&countryid=' + countryid + '&zoneid=' + zoneid + '&isset=' + isset + '&city=' + city + '&postcode=' + postcode,
 						type: 'post',
-						data: $('#payment-method input[type=\'radio\']:checked'),
+						data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -657,7 +657,7 @@ function paymentmethodload(countryid, zoneid, isset, city, postcode) {
 				  $.ajax({
 						url: 'index.php?route=onecheckout/payment&countryid=' + countryid + '&zoneid=' + zoneid + '&isset=' + isset + '&city=' + city + '&postcode=' + postcode,
 						type: 'post',
-						data: $('#payment-method input[type=\'radio\']:checked'),
+						data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -726,7 +726,7 @@ function paymentmethodid(addressid) {
 					 $.ajax({
 						url: 'index.php?route=onecheckout/payment&addressid=' + addressid,
 						type: 'post',
-						data: $('#payment-method input[type=\'radio\']:checked'),
+						data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -769,7 +769,7 @@ function paymentmethodidload(addressid) {
 					 $.ajax({
 						url: 'index.php?route=onecheckout/payment&addressid=' + addressid,
 						type: 'post',
-						data: $('#payment-method input[type=\'radio\']:checked'),
+						data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {
@@ -999,7 +999,7 @@ function createorder(){
 								$.ajax({
 									url: 'index.php?route=onecheckout/guest/shipping',
 									type: 'post',
-									data: $('#shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-address input[type=\'password\'], #shipping-address input[type=\'checkbox\']:checked, #shipping-address input[type=\'radio\']:checked, #shipping-address select'),
+									data: $('#shipping-method select, #shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-address input[type=\'password\'], #shipping-address input[type=\'checkbox\']:checked, #shipping-address input[type=\'radio\']:checked, #shipping-address select'),
 									dataType: 'json',
 									success: function(json) {
 										$('.error').remove();
@@ -1081,7 +1081,7 @@ function createorder(){
 	$.ajax({
 		url: 'index.php?route=onecheckout/guest',
 		type: 'post',
-		data: $('#shipping-method input[type=\'text\'], #payment-address input[type=\'text\'], #payment-address input[type=\'checkbox\']:checked, #payment-address select'),
+		data: $('#shipping-method select, #shipping-method input[type=\'text\'], #payment-address input[type=\'text\'], #payment-address input[type=\'checkbox\']:checked, #payment-address select'),
 		dataType: 'json',
 		success: function(json) {
 			$('.error').remove();
@@ -1146,11 +1146,11 @@ function createorder(){
 				<?php if ($shipping_required) { ?>
 				if($('#payment-address input[name=\'shipping_address\']:checked').attr('value') == 1) {
 					postshippingmethod();					
-				} else{			
+				} else{
 					$.ajax({
 						url: 'index.php?route=onecheckout/guest/shipping',
 						type: 'post',
-						data: $('#shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-address select, #shipping-address input[type=\'radio\']:checked'),
+						data: $('#shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-method select, #shipping-address input[type=\'radio\']:checked'),
 						dataType: 'json',				
 						success: function(json) {
 							$('.error').remove();
@@ -1282,7 +1282,7 @@ function logcreateorder(){
 							$.ajax({
 								url: 'index.php?route=onecheckout/guest/shipping',
 								type: 'post',
-								data: $('#shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-address input[type=\'password\'], #shipping-address input[type=\'checkbox\']:checked, #shipping-address input[type=\'radio\']:checked, #shipping-address select'),
+								data: $('#shipping-method select, #shipping-method input[type=\'text\'], #shipping-address input[type=\'text\'], #shipping-address input[type=\'password\'], #shipping-address input[type=\'checkbox\']:checked, #shipping-address input[type=\'radio\']:checked, #shipping-address select'),
 								dataType: 'json',
 								success: function(json) {
 									$('.error').remove();
@@ -1370,7 +1370,7 @@ function postshippingmethod() {
 	$.ajax({
 		url: 'index.php?route=onecheckout/shipping',
 		type: 'post',
-		data: $('#shipping-method input[type=\'radio\']:checked'),
+		data: $('#shipping-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 		dataType: 'json',
 		success: function(json) {
 			$('.success, .warning').remove();
@@ -1493,11 +1493,15 @@ function upcartmodule() {
 }
 
 $('#button-coupon').live('click', function() {
+	confirmCoupon();
+});
+
+function confirmCoupon() {
 	$.ajax({
 		type: 'POST',
 		url: 'index.php?route=onecheckout/cartmodule/validateCoupon',
 		data: $('#coupon :input'),
-		dataType: 'json',		
+		dataType: 'json',
 		beforeSend: function() {
 			$('.success, .warning').remove();
 			$('#button-coupon').attr('disabled', true);
@@ -1506,20 +1510,19 @@ $('#button-coupon').live('click', function() {
 		complete: function() {
 			$('#button-coupon').attr('disabled', false);
 			$('.wait').remove();
-		},		
+		},
 		success: function(json) {
 			if (json['error']) {
-				$('#confirm .onecheckout-content').prepend('<div class="warning" style="display: none;">' + json['error'] + '</div>');					
+				$('#confirm .onecheckout-content').prepend('<div class="warning" style="display: none;">' + json['error'] + '</div>');
 				$('.warning').fadeIn('slow');
 			}
-			
+
 			if (json['redirect']) {
 				confirmorder();
 			}
 		}
 	});
-});
-
+}
 $('#button-reward').live('click', function() {
 	$.ajax({
 		type: 'POST',
@@ -1582,7 +1585,9 @@ $('#confirmorder #button-confirm').live('click', function() {
 });
 
 $('#button-confirmorder').live('click', function() {
-	
+	if ($('#couponInput').val() != '') {
+		confirmCoupon();
+	}
 	if($('.onecheckout-content .error:first').html()) {
 		$('.success, .warning').remove();
 		$('#confirm .onecheckout-content').prepend('<div class="warning" style="display: none;">' + $('.onecheckout-content .error:first').html() + '</div>');
@@ -1662,7 +1667,7 @@ function refreshpayment() {
 				  $.ajax({
 						url: ajaxurl,
 						type: 'post',
-						data: $('#payment-method input[type=\'radio\']:checked'),
+						data: $('#payment-method input[type=\'radio\']:checked, #shipping-method select, #shipping-method input[type="text"]'),
 						dataType: 'json',
 						success: function(json) {
 							if (json['redirect']) {

@@ -66,7 +66,9 @@ class ControllerOneCheckoutCartModule extends Controller {
 					
 		$this->render();
   	}
-	
+	public function removeCoupon() {
+		$this->session->data['coupon'] = '';
+	}
 	public function validateCoupon() {
 		$this->load->model('onecheckout/checkout');
 		$this->language->load('onecheckout/checkout');	

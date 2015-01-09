@@ -1462,6 +1462,7 @@ $this->data = array_merge( $this->data , $this->language->load('sale/order'));
 			$this->data['shipping_type'] = $order_info['shipping_type'];
 			$this->data['shipping_delivery_date'] = $order_info['shipping_delivery_date'];
 			$this->data['payment_delivery_date'] = $order_info['payment_delivery_date'];
+			$this->data['payment_delivery_interval'] = $order_info['payment_delivery_interval'];
 			$this->data['shipping_telephone'] = $order_info['shipping_telephone'];
 			$this->data['need2call'] = $order_info['need2call'];
 			$this->data['need2call_text'] = ($order_info['need2call'] == 1) ? "Позвонить" : "Cделать сюрприз";
