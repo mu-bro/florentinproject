@@ -115,6 +115,7 @@ class Mail {
 			}
 
 			if ($add_skin) {
+			$siteUrl = HTTP_CATALOG;
 				$html = '<html>
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -129,7 +130,7 @@ class Mail {
 							<table style="width:100%" cellpadding="0" cellspacing="0">
 								<tr>
 									<td style="text-align:left;">
-										<img src="'. HTTP_CATALOG .'image/data/logo.png" title="florentin" alt="florentin" style="margin:20px;">
+										<img src="http://florentinproject.com/logo.png" title="florentin" alt="florentin" style="margin:20px;width:130px;">
 									<td>
 									<td style="text-align:right;padding:20px 20px 20px 5px;vertical-align:top;">
 										<div style="font-family: Arial, Helvetica, sans-serif;color: #000;font-size: 18px;line-height: 22px;">8 (495) 000 00 00</div>
@@ -157,7 +158,7 @@ class Mail {
 			} else {
 				$html = $this->html;
 			}
-//echo $html;die;
+
 			$message .= '--' . $boundary . '_alt' . $this->newline;
 			$message .= 'Content-Type: text/html; charset="utf-8"' . $this->newline;
 			$message .= 'Content-Transfer-Encoding: 8bit' . $this->newline . $this->newline;

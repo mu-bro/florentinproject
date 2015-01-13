@@ -123,6 +123,7 @@ class ControllerModuleGeoip extends Controller {
         $this->language->load('module/geoip');
 
         $this->data['text_search_placeholder'] = $this->language->get('text_search_placeholder');
+        $this->data['choose_city_subtitle'] = $this->language->get('choose_city_subtitle');
 
         $this->load->model('module/geoip');
 
@@ -277,7 +278,6 @@ class ControllerModuleGeoip extends Controller {
      * Используется, когда пользователь меняет регион вручную.
      */
     private function forceSaveInSession() {
-die('forceSaveInSession');
         $session = $this->registry->get('session');
         $zone_id = $this->geoip->getZoneId();
         $country_id = $this->geoip->getCountryId();

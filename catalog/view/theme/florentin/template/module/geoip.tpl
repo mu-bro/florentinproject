@@ -66,29 +66,10 @@
         });
         <?php } ?>
 
-        <?php if ($confirm_region) { ?>
-        GeoIp.confirmRegion.dialog({
-            autoOpen: true,
-            height: 180,
-            width: 350,
-            modal:false,
-            position: [GeoIp.block.offset().left + GeoIp.block.width() - 352, GeoIp.block.offset().top + 22],
-            buttons: {
-                     "<?php echo $text_yes; ?>": function() {
-                         $(this).dialog('close');
-                     },
-                     "<?php echo $text_no; ?>": function() {
-                         $(this).dialog('close');
-                         GeoIp.chooseRegion.dialog('open');
-                     }
-            }
-        });
-        <?php } ?>
-
         GeoIp.chooseRegion.dialog({
             autoOpen:  false,
-            minWidth:  200,
-            minHeight: 100,
+            minWidth:  400,
+            minHeight: 200,
             resizable: false,
             modal:     true,
             open:      function() {
@@ -125,5 +106,26 @@
         GeoIp.block.find('.geoip-text').click(function() {
             GeoIp.chooseRegion.dialog('open');
         });
+
+        <?php if ($confirm_region) { ?>
+            GeoIp.chooseRegion.dialog('open');
+//        GeoIp.confirmRegion.dialog({
+//            autoOpen: true,
+//            resizable: false,
+//            height: 180,
+//            width: 350,
+//            modal:true,
+//            //position: [GeoIp.block.offset().left + GeoIp.block.width() - 352, GeoIp.block.offset().top + 22],
+//            buttons: {
+//                     "<?php //echo $text_yes; ?>//": function() {
+//                         $(this).dialog('close');
+//                     },
+//                     "<?php //echo $text_no; ?>//": function() {
+//                         $(this).dialog('close');
+//                         GeoIp.chooseRegion.dialog('open');
+//                     }
+//            }
+//        });
+        <?php } ?>
     });
 </script>
